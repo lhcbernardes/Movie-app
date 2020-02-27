@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular'; //import the Nave 
 import { MovieServiceProvider } from '../../providers/movie-service/movie-service';
 import { Storage } from '@ionic/storage';
+import { identifierName } from '@angular/compiler';
 
 /**
  * Generated class for the MovieDetailsPage page.
@@ -46,18 +47,21 @@ export class MovieDetailsPage {
   }
 
   async toggleFavorite(): Promise<void> {
-    const favoritos: any[] = await this.storage.get('favoritos') || [];
-    if(favoritos.find(f=>f.id == this.movie.id)==this.storage.get('favoritos'))
-    {
-      favoritos.push(this.movie);
-      this.storage.set('favoritos',favoritos);
-      console.log(this.movie);
-    }
-    else{
-      console.log("JA EXISTEEEE");
-      
-    }
-    
+      const favoritos: any[] = await this.storage.get('favoritos') || [];
+      //If the movie favorited dont exist in array favoritos will be saved
+      //If array favoritos is empty the movie will be saved
+      if(!favoritos.find(f=>f.id == this.movie.id))
+      {
+        favoritos.push(this.movie);
+        this.storage.set('favoritos',favoritos);
+        console.log(this.movie.id);
+      }
+      else{
+        console.log("Filme ja existe");
+        console.log(this.movie.id);
+        console.log(favoritos.filter(f=>f.id));
+      }
     };
+
 
 }
