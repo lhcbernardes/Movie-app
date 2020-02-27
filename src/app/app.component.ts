@@ -22,7 +22,7 @@ export class MyApp {
     this.pages = [
       { title: 'Inicio', component: 'HomePage' },
       { title: 'Nas telonas', component: 'InTheatresPage'},
-      { title: 'Filmes Populares', component: 'PopularMoviesPage'}
+      { title: 'Filmes Populares', component: 'PopularMoviesPage'},
     ];
 
   }

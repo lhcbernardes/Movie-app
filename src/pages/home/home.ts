@@ -48,4 +48,14 @@ export class HomePage {
 
   }
 
+  launchMyMovies(){
+
+
+    //uses the modal controller to launch the meus filmes modal
+    let modal = this.modalCtrl.create('MeusFilmes');
+
+    modal.present();
+
+  }
+
 }

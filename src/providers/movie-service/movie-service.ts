@@ -19,14 +19,14 @@ export class MovieServiceProvider {
 
   //Function that returns the current popular movies from the TMDb
    getPopularMovies(){
-    return this.http.get('https://api.themoviedb.org/3/discover/movie?api_key='+this.apiKey+'&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1')
+    return this.http.get('https://api.themoviedb.org/3/discover/movie?api_key='+this.apiKey+'&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1')
                         .map(res=> res.json());
   }
 
   //Function that returns movies that are currently showing in Cinemas from the TMDb
   getInTheaters(){
 
-    return this.http.get('https://api.themoviedb.org/3/discover/movie?api_key='+this.apiKey+'&language=en-US&primary_release_date.gte=2017-04-15&primary_release_date.lte=2017-12-25&include_adult=false&include_video=false&page=1')
+    return this.http.get('https://api.themoviedb.org/3/discover/movie?api_key='+this.apiKey+'&language=pt-BR&primary_release_date.gte=2017-04-15&primary_release_date.lte=2017-12-25&include_adult=false&include_video=false&page=1')
                         .map(res=> res.json());
 
   }
@@ -34,7 +34,7 @@ export class MovieServiceProvider {
   //Uses the TMDb Search api to return movies based on the users search
   searchMovies(searchStr:string){
 
-    return this.http.get('https://api.themoviedb.org/3/search/movie?api_key='+this.apiKey+'&query='+searchStr+'&language=en-US&primary_release_date.gte=2017-04-15&primary_release_date.lte=2017-12-25&include_adult=false&include_video=false&page=1')
+    return this.http.get('https://api.themoviedb.org/3/search/movie?api_key='+this.apiKey+'&query='+searchStr+'&language=pt-BR&primary_release_date.gte=2017-04-15&primary_release_date.lte=2017-12-25&include_adult=false&include_video=false&page=1')
                         .map(res=>res.json());
 
   }
@@ -42,7 +42,7 @@ export class MovieServiceProvider {
   //returns the information on a particular movie using it's ID
   getMovie(id){
 
-    return this.http.get('https://api.themoviedb.org/3/movie/'+id+'?api_key='+this.apiKey+'&language=en-US')
+    return this.http.get('https://api.themoviedb.org/3/movie/'+id+'?api_key='+this.apiKey+'&language=pt-BR')
                         .map(res=>res.json());
 
   }
@@ -50,7 +50,7 @@ export class MovieServiceProvider {
     //Returns a the list of genres in TMDB
    getGenres(){
 
-    return this.http.get('https://api.themoviedb.org/3/genre/movie/list?api_key='+this.apiKey+'&language=en-US')
+    return this.http.get('https://api.themoviedb.org/3/genre/movie/list?api_key='+this.apiKey+'&language=pt-BR')
                         .map(res=>res.json());
 
   }
@@ -58,7 +58,7 @@ export class MovieServiceProvider {
     //Returns a list of movies with a specified genre 
    getMoviesByGenre(genreId){
 
-    return this.http.get('https://api.themoviedb.org/3/discover/movie?api_key='+this.apiKey+'&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres='+genreId)
+    return this.http.get('https://api.themoviedb.org/3/discover/movie?api_key='+this.apiKey+'&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres='+genreId)
                         .map(res=>res.json());
 
   }

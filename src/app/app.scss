@@ -1,5 +1,22 @@
 // http://ionicframework.com/docs/theming/
 
+h2{color: white;}
+img {
+  width: 80px !important;
+  height: 100px !important;
+  border-radius:0px !important;
+}
+button {
+  padding: 0px !important;
+  font-family: inherit;
+  font-style: inherit;
+  font-variant: inherit;
+  line-height: 1;
+  text-transform: none;
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
 
 // App Global Sass
 // --------------------------------------------------

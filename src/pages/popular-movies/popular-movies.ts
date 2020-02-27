@@ -18,8 +18,11 @@ export class PopularMoviesPage {
   //create an empty array
   popularMovies:any[]=[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public movieService:MovieServiceProvider,
-              public modalCtrl:ModalController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public movieService:MovieServiceProvider,
+    public modalCtrl:ModalController) {
   }
 
   ionViewDidLoad() {
