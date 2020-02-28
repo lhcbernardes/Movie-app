@@ -19,6 +19,7 @@ import { Storage } from '@ionic/storage';
 })
 export class MeusFilmes {
     favoritos: any[]=[];
+    selecionado: any[]=[];
     constructor(
       public navCtrl: NavController, 
       public navParams: NavParams, 
@@ -33,6 +34,26 @@ export class MeusFilmes {
       this.favoritos = await this.storage.get('favoritos') || [];
       console.log(this.favoritos); 
       console.log("abriu");         
+    }
+
+    async deleteMovie(movie): Promise<void>{
+      const favoritos: any[] = await this.storage.get('favoritos') || [];
+      //If the movie favorited dont exist in array favoritos will be saved
+      //If array favoritos is empty the movie will be saved
+      if(favoritos.find(f=>f.id == movie))
+      {
+        favoritos.push(movie);
+        this.storage.remove(movie);
+        console.log(movie);
+      }
+      //localStorage.removeItem(movie);
+      console.log(this.favoritos);
+      console.log("id");
+      console.log(movie);
+    }
+
+    clear(){
+      this.storage.clear();
     }
   
     dismiss() {

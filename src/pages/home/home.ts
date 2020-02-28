@@ -22,9 +22,10 @@ export class HomePage {
     //call the get Genres function and store the response in our genres array
     this.movieService.getGenres()
     .subscribe(data => {
-
-      this.genres = data.genres;
       
+      this.genres = data.genres;
+      console.log("Lista de generos");
+      console.log(this.genres);
     });
 
     console.log('ionViewDidLoad InTheatresPage');

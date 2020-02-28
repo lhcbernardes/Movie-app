@@ -32,13 +32,12 @@ export class MovieDetailsPage {
   async ionViewDidLoad() {
 
     this.movieService.getMovie(this.navParams.get('id')).subscribe(movie => {
-      console.log(movie)
+      console.log(movie);
       this.movie = movie;
     });
     const favoritos: any[] = await this.storage.get('favoritos') || [];
     this.isFavorite = favoritos.find(f=>f.id == this.movie.id);    
-    //    console.log('ionViewDidLoad MovieDetailsPage');
-        
+    //    console.log('ionViewDidLoad MovieDetailsPage'); 
   }
 
 
@@ -59,13 +58,14 @@ export class MovieDetailsPage {
       }
       else{
         console.log("Filme ja existe");
+        console.log(favoritos);
         this.savedToast();
       }
     };
 
     saveToast() {
       let toast = this.toastCtrl.create({
-        message: 'O filme foi adicionado',
+        message: 'O filme foi adicionado com sucesso',
         duration: 3000,
         position: 'bottom'
       });
@@ -79,7 +79,7 @@ export class MovieDetailsPage {
 
     savedToast() {
       let toast = this.toastCtrl.create({
-        message: 'O filme ja esta na lista de favoritos',
+        message: 'O filme já esta na lista de favoritos',
         duration: 3000,
         position: 'bottom'
       });

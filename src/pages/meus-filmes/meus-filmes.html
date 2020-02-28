@@ -17,6 +17,11 @@
 
 
 <ion-content padding>
+   <!-- this fab is placed at bottom right -->
+   <ion-fab right bottom>
+    <button ion-fab (click)="clear()" color="danger"><ion-icon name="close-outline"></ion-icon></button>
+  </ion-fab>
+
    <!--Another virtual scroll ion-list that loops through the movie array that now holds the movies of the genre chosen by the user-->
    <ion-list [virtualScroll]="favoritos">
     
@@ -27,9 +32,9 @@
     </ion-avatar>
 
      <!--Adds a click event to trigger the launchMovieDetailsPage function to launch the movies modal and pass the movie object chosen by the user-->
-     <h2 style="font-weight:bold;">{{movie.original_title}}</h2><br>
+     <h2  style="font-weight:bold;">{{movie.original_title}}</h2><br>
      <p style="padding-left:15px;">Data de Lançamento: {{movie.release_date}}</p>
- 
+     <!--<button (click)="deleteMovie(movie.id)">x</button>-->
     </ion-item>
   </ion-list>
 
