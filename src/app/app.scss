@@ -1,6 +1,10 @@
 // http://ionicframework.com/docs/theming/
 
-h2{color: white;}
+h2{
+  color: white !important;
+  font-weight:bold !important;
+  text-transform: uppercase !important;
+}
 img {
   width: 80px !important;
   height: 100px !important;
@@ -16,7 +20,15 @@ button {
   cursor: pointer;
   -webkit-appearance: button;
 }
+p{
+  font-style:oblique !important;
+  font-size: large !important;
+}
 
+.item-md{
+  margin:0px !important;
+
+}
 
 // App Global Sass
 // --------------------------------------------------

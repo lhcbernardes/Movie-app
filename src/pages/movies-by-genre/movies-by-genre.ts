@@ -18,10 +18,13 @@ import { MovieServiceProvider } from '../../providers/movie-service/movie-servic
 export class MoviesByGenrePage {
 
   //create an empty array
-  movies:any[]=[]
+  movies:any[]=[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public movieService:MovieServiceProvider, 
-              public modalCtrl:ModalController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public movieService:MovieServiceProvider, 
+    public modalCtrl:ModalController) {
   }
 
   ionViewDidLoad() {

@@ -14,7 +14,7 @@
   <ion-fab right bottom>
     <button ion-fab color="navbarColor"><ion-icon name="add-circle-outline"></ion-icon></button>
     <ion-fab-list side="top">
-      <button ion-fab color="navbarColor" (click)="launchMyMovies()"><ion-icon name="albums-outline"></ion-icon></button>
+      <button ion-fab color="navbarColor" (click)="launchMyMovies()"><ion-icon name="star-outline"></ion-icon></button>
       <button ion-fab color="navbarColor" (click)="launchSearchModal()"><ion-icon name="search"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
@@ -27,7 +27,7 @@
 
 <!--Add a click event to trigger the launchMoviesByGenrePage function and pass in the genre object-->
     <button  ion-button clear>
-      <h2 style="font-weight:bold;">{{genre.name}}</h2></button><br>
+      <h2>{{genre.name}}</h2></button><br>
      <!-- <p style="padding-left:15px;">Id: {{genre.id}}</p> -->
    
     </ion-item>

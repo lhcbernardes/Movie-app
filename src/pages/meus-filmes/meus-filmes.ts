@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular'; //import the modal and view controllers
-import { MovieServiceProvider } from '../../providers/movie-service/movie-service'; //import the movie service
+import { Storage } from '@ionic/storage';
 
 
 /**
@@ -18,53 +18,34 @@ import { MovieServiceProvider } from '../../providers/movie-service/movie-servic
   templateUrl: 'meus-filmes.html',
 })
 export class MeusFilmes {
+    favoritos: any[]=[];
+    constructor(
+      public navCtrl: NavController, 
+      public navParams: NavParams, 
+      public modalCtrl:ModalController,
+      private storage: Storage,
+      public viewCtrl:ViewController) {
+    }
+  
+    async ionViewDidLoad() {
+  
+       
+      this.favoritos = await this.storage.get('favoritos') || [];
+      console.log(this.favoritos); 
+      console.log("abriu");         
+    }
+  
+    dismiss() {
+      this.viewCtrl.dismiss();
+    }
 
-  //create an empty array to hold the results of the search
-  results:any[]=[];
+      launchMovieDetailsPage(movie){
 
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public movieService:MovieServiceProvider, 
-    public modalCtrl:ModalController, 
-    public viewCtrl:ViewController) {
+        //Use the Modal Contoller to launch the movie details page and pass the movie object for the movie chosen by the User
+        let movieModal = this.modalCtrl.create('MovieDetailsPage', movie);
+    
+        movieModal.present();
+    
+      }
+  
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
-  }
-
-
- 
-  searchMovies(ev: any) {
-
-
-    // set val to the value of the searchbar
-    let val = ev.target.value;
-
-      //Calls the searchMovies function from the movies service and stores the response in the results array
-      this.movieService.searchMovies(val).subscribe(data=>{
-
-      console.log(data.results);
-      this.results = data.results;
-    });
-     
-  }
-
-  //
-  launchMovieDetailsPage(movie){
-
-   //Use the Modal Contoller to launch the movie details page and pass the movie object for the movie chosen by the User
-    let movieModal = this.modalCtrl.create('MovieDetailsPage', movie);
-
-    movieModal.present();
-
-  }
-
-   dismiss() {
-    //closes the search modal and returns to the homepage
-    this.viewCtrl.dismiss();
-  }
-
-
-}

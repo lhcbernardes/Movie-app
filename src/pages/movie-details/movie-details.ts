@@ -1,8 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular'; //import the Nave 
 import { MovieServiceProvider } from '../../providers/movie-service/movie-service';
 import { Storage } from '@ionic/storage';
-import { identifierName } from '@angular/compiler';
 
 /**
  * Generated class for the MovieDetailsPage page.
@@ -58,8 +57,6 @@ export class MovieDetailsPage {
       }
       else{
         console.log("Filme ja existe");
-        console.log(this.movie.id);
-        console.log(favoritos.filter(f=>f.id));
       }
     };
 
