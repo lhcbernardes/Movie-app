@@ -55,6 +55,7 @@ export class MovieDetailsPage {
         this.storage.set('favoritos',favoritos);
         console.log(this.movie.id);
         this.saveToast();
+        this.isFavorite=true;
       }
       else{
         console.log("Filme ja existe");
