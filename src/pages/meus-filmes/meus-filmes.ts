@@ -28,28 +28,27 @@ export class MeusFilmes {
       public viewCtrl:ViewController) {
     }
   
-    async ionViewDidLoad() {
-  
-       
-      this.favoritos = await this.storage.get('favoritos') || [];
+    async ionViewDidLoad() { 
+      await this.getFavoritos();
       console.log(this.favoritos); 
       console.log("abriu");         
     }
 
+    async getFavoritos(){
+      this.favoritos = await this.storage.get('favoritos') || [];
+    }
+
     async deleteMovie(movie): Promise<void>{
-      const favoritos: any[] = await this.storage.get('favoritos') || [];
+      let favoritos: any[] = await this.storage.get('favoritos') || [];
       //If the movie favorited dont exist in array favoritos will be saved
       //If array favoritos is empty the movie will be saved
       if(favoritos.find(f=>f.id == movie))
       {
-        favoritos.push(movie);
-        this.storage.remove(movie);
-        console.log(movie);
+        //favoritos.splice(favoritos.indexOf(movie), 1);
+        favoritos = favoritos.filter((f)=> f.id != movie);
+        await this.storage.set('favoritos',favoritos);
+        await this.getFavoritos();
       }
-      //localStorage.removeItem(movie);
-      console.log(this.favoritos);
-      console.log("id");
-      console.log(movie);
     }
 
     clear(){

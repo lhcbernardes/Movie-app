@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content fullscreen>
   <!--Use the ion-fab component to creat the FAB button and add a click event to trigger the launchSearchModal function -->
 
   <!-- this fab is placed at bottom right -->
@@ -23,7 +23,7 @@
   <ion-list [virtualScroll]="genres ">
 
   <!--specify the individual object i.e let genre-->
-    <ion-item *virtualItem='let genre' (click)="launchMoviesByGenrePage(genre)" text-wrap>
+    <ion-item no-lines *virtualItem='let genre' (click)="launchMoviesByGenrePage(genre)" text-wrap>
 
 <!--Add a click event to trigger the launchMoviesByGenrePage function and pass in the genre object-->
     <button  ion-button clear>

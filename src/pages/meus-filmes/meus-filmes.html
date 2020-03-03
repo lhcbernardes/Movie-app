@@ -16,25 +16,35 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content fullscreen>
    <!-- this fab is placed at bottom right -->
    <ion-fab right bottom>
     <button ion-fab (click)="clear()" color="danger"><ion-icon name="close-outline"></ion-icon></button>
   </ion-fab>
 
+  
    <!--Another virtual scroll ion-list that loops through the movie array that now holds the movies of the genre chosen by the user-->
    <ion-list [virtualScroll]="favoritos">
     
-    <ion-item *virtualItem='let movie' (click)="launchMovieDetailsPage(movie)" text-wrap>
+    <ion-item no-lines *virtualItem='let movie'  text-wrap>
 
-     <ion-avatar item-start>
-     <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}">
-    </ion-avatar>
-
-     <!--Adds a click event to trigger the launchMovieDetailsPage function to launch the movies modal and pass the movie object chosen by the user-->
-     <h2  style="font-weight:bold;">{{movie.original_title}}</h2><br>
-     <p style="padding-left:15px;">Data de Lançamento: {{movie.release_date}}</p>
-     <!--<button (click)="deleteMovie(movie.id)">x</button>-->
+    <ion-grid>
+      <ion-row justify-content-start>
+        <ion-col col-auto>
+          <ion-avatar (click)="launchMovieDetailsPage(movie)"  item-start>
+            <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}">
+          </ion-avatar>
+        </ion-col>
+        <ion-col col-md-2 pull-md-2>
+          <h2 (click)="launchMovieDetailsPage(movie)" style="font-weight:bold;">{{movie.original_title}}</h2><br>
+          <p >Data de Lançamento: {{movie.release_date}}</p>
+        </ion-col>
+        <ion-col col-auto>
+         
+          <button ion-button color="navbarColor" icon-only (click)="deleteMovie(movie.id)"><ion-icon name="trash-outline" style="zoom:1.0;" ></ion-icon></button>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
     </ion-item>
   </ion-list>
 

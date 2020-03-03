@@ -46,27 +46,28 @@ export class MovieDetailsPage {
   }
 
   async toggleFavorite(): Promise<void> {
-      const favoritos: any[] = await this.storage.get('favoritos') || [];
+      let favoritos: any[] = await this.storage.get('favoritos') || [];
       //If the movie favorited dont exist in array favoritos will be saved
       //If array favoritos is empty the movie will be saved
+        this.isFavorite=!this.isFavorite;
       if(!favoritos.find(f=>f.id == this.movie.id))
       {
-        favoritos.push(this.movie);
-        this.storage.set('favoritos',favoritos);
+        favoritos.unshift(this.movie);
+      
         console.log(this.movie.id);
-        this.saveToast();
-        this.isFavorite=true;
+        this.saveToast('O filme foi adicionado com sucesso');
       }
       else{
-        console.log("Filme ja existe");
-        console.log(favoritos);
-        this.savedToast();
+        favoritos = favoritos.filter((f)=> f.id != this.movie.id);
+        this.saveToast('Filme removido');
       }
+      
+      await this.storage.set('favoritos',favoritos);
     };
 
-    saveToast() {
+    saveToast(msg: string) {
       let toast = this.toastCtrl.create({
-        message: 'O filme foi adicionado com sucesso',
+        message: msg,
         duration: 3000,
         position: 'bottom'
       });
@@ -78,18 +79,5 @@ export class MovieDetailsPage {
       toast.present();
     }
 
-    savedToast() {
-      let toast = this.toastCtrl.create({
-        message: 'O filme já esta na lista de favoritos',
-        duration: 3000,
-        position: 'bottom'
-      });
-    
-      toast.onDidDismiss(() => {
-        console.log('Dismissed toast');
-      });
-    
-      toast.present();
-    }
 
 }
