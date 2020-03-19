@@ -24,9 +24,9 @@
 
   
    <!--Another virtual scroll ion-list that loops through the movie array that now holds the movies of the genre chosen by the user-->
-   <ion-list [virtualScroll]="favoritos">
+   <ion-list *ngIf="movies">
     
-    <ion-item no-lines *virtualItem='let movie'  text-wrap>
+    <ion-item no-lines *ngFor="let movie of movies" text-wrap>
 
     <ion-grid>
       <ion-row justify-content-start>
@@ -37,7 +37,7 @@
         </ion-col>
         <ion-col col-md-2 pull-md-2>
           <h2 (click)="launchMovieDetailsPage(movie)" style="font-weight:bold;">{{movie.original_title}}</h2><br>
-          <p >Data de Lançamento: {{movie.release_date}}</p>
+          <p >Data de Lançamento: {{movie.release_date.substring(8,10)}}/{{movie.release_date.substring(5,7)}}/{{movie.release_date.substring(0,4)}}</p>
         </ion-col>
         <ion-col col-auto>
          

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { MovieServiceProvider } from '../../providers/movie-service/movie-service';
 import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
+import {Movie} from "../../model/model";
+
 /**
  * Generated class for the MovieDetailsPage page.
  *
@@ -17,7 +19,8 @@ import { ToastController } from 'ionic-angular';
 })
 export class MovieDetailsPage {
   isFavorite: boolean = false;
-  movie: any = {};
+  //create an empty array
+  movie = new Array<Movie>();  
   favoritos: string = "";
 
   constructor(
@@ -36,7 +39,7 @@ export class MovieDetailsPage {
       this.movie = movie;
     });
     const favoritos: any[] = await this.storage.get('favoritos') || [];
-    this.isFavorite = favoritos.find(f=>f.id == this.movie.id);    
+    this.isFavorite = favoritos.find(f=>f.id == this.movie);    
     //    console.log('ionViewDidLoad MovieDetailsPage'); 
   }
 
@@ -50,15 +53,15 @@ export class MovieDetailsPage {
       //If the movie favorited dont exist in array favoritos will be saved
       //If array favoritos is empty the movie will be saved
         this.isFavorite=!this.isFavorite;
-      if(!favoritos.find(f=>f.id == this.movie.id))
+      if(!favoritos.find(f=>f.id == this.movie))
       {
         favoritos.unshift(this.movie);
       
-        console.log(this.movie.id);
+        console.log(this.movie);
         this.saveToast('O filme foi adicionado com sucesso');
       }
       else{
-        favoritos = favoritos.filter((f)=> f.id != this.movie.id);
+        favoritos = favoritos.filter((f)=> f.id != this.movie);
         this.saveToast('Filme removido');
       }
       

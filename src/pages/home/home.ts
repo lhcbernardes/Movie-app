@@ -12,8 +12,10 @@ export class HomePage {
     //create an empty array
    genres:any[]=[];
 
-  constructor(public navCtrl: NavController, public movieService:MovieServiceProvider, 
-              public modalCtrl:ModalController) {
+  constructor(
+    public navCtrl: NavController, 
+    public movieService:MovieServiceProvider, 
+    public modalCtrl:ModalController) {
   }
 
 //The ionViewDidLoad function loads as soon as the page is open

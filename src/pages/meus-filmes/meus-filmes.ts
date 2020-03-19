@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular'; //import the modal and view controllers
 import { Storage } from '@ionic/storage';
+import {Movie} from "../../model/model";
 
 
 /**
@@ -18,6 +19,8 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'meus-filmes.html',
 })
 export class MeusFilmes {
+  //create an empty array
+  movies = new Array<Movie>();
     favoritos: any[]=[];
     selecionado: any[]=[];
     constructor(
@@ -30,23 +33,26 @@ export class MeusFilmes {
   
     async ionViewDidLoad() { 
       await this.getFavoritos();
-      console.log(this.favoritos); 
+      console.log(this.movies); 
       console.log("abriu");         
     }
 
     async getFavoritos(){
-      this.favoritos = await this.storage.get('favoritos') || [];
+      this.movies = await this.storage.get('favoritos') || [];
     }
 
     async deleteMovie(movie): Promise<void>{
-      let favoritos: any[] = await this.storage.get('favoritos') || [];
+      let movies = await this.storage.get('favoritos') || [];
       //If the movie favorited dont exist in array favoritos will be saved
       //If array favoritos is empty the movie will be saved
-      if(favoritos.find(f=>f.id == movie))
+      console.log(movie);
+      if(movies.find(f=>f.id == movie))
       {
         //favoritos.splice(favoritos.indexOf(movie), 1);
-        favoritos = favoritos.filter((f)=> f.id != movie);
-        await this.storage.set('favoritos',favoritos);
+        console.log(movie.id);
+        console.log(movies.id);
+        movies = movies.filter((f)=> f.id != movie);
+        await this.storage.set('favoritos',movies);
         await this.getFavoritos();
       }
     }

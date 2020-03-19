@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular'; //Import the Modal controller and NavParams
 import { MovieServiceProvider } from '../../providers/movie-service/movie-service';
+import {Movie} from "../../model/model";
 
 
 /**
@@ -17,8 +18,8 @@ import { MovieServiceProvider } from '../../providers/movie-service/movie-servic
 })
 export class MoviesByGenrePage {
 
-  //create an empty array
-  movies:any[]=[];
+   //create an empty array
+   movies = new Array<Movie>();
 
   constructor(
     public navCtrl: NavController, 
@@ -28,6 +29,7 @@ export class MoviesByGenrePage {
   }
 
   ionViewDidLoad() {
+  
 
     //call the getMoviesByGenre function and use NavParams to get the id from genre object we passed in from our homepage
     this.movieService.getMoviesByGenre(this.navParams.get('id'))

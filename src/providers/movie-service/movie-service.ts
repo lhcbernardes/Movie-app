@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'; //Imports injectable decorator
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http'; 
 import 'rxjs/Rx';
  

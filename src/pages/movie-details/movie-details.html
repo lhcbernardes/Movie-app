@@ -26,12 +26,13 @@
   <ion-grid *ngIf="movie">
   <ion-row>
     <ion-col col-6>
-      <img [src]="'http://image.tmdb.org/t/p/w500'+movie.poster_path">
+      <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}">
     </ion-col>
 
     <ion-col col-6>
       <h4>Título: </h4><p>{{movie.original_title}}</p>
       <h4>Lançamento: </h4><p>{{movie.release_date}}</p>
+
       <h4>Nota: </h4><p>{{movie.vote_average}}</p>
     </ion-col>
   </ion-row>

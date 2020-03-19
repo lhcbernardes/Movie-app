@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular'; //Import the Modal controller
 import { MovieServiceProvider } from '../../providers/movie-service/movie-service';
-
+import {Movie} from "../../model/model";
 /**
  * Generated class for the PopularMoviesPage page.
  *
@@ -16,7 +16,7 @@ import { MovieServiceProvider } from '../../providers/movie-service/movie-servic
 })
 export class PopularMoviesPage {
   //create an empty array
-  popularMovies:any[]=[];
+  movies = new Array<Movie>();
 
   constructor(
     public navCtrl: NavController, 
@@ -34,7 +34,7 @@ export class PopularMoviesPage {
       console.log(res.results);
 
       //store the response on our empty array
-      this.popularMovies = res.results;
+      this.movies = res.results;
       
     });
 

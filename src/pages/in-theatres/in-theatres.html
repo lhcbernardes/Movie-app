@@ -28,8 +28,8 @@
 
     <!--Adds a click event to trigger the launchMovieDetailsPage function to launch the movies modal and pass the movie object chosen by the user-->
     <h2 style="font-weight:bold;">{{movie.original_title}}</h2><br>
-      <p style="padding-left:15px;">Data de lançamento: {{movie.release_date}}</p>  
-    </ion-item>
+    <p >Data de Lançamento: {{movie.release_date.substring(8,10)}}/{{movie.release_date.substring(5,7)}}/{{movie.release_date.substring(0,4)}}</p>
+  </ion-item>
   </ion-list>
 
 
