@@ -15,10 +15,11 @@
 
 </ion-header>
 
+<ion-content fullscreen>
 <!--Another virtual scroll ion-list that loops through the movie array that now holds the movies of the genre chosen by the user-->
-<ion-list *ngIf="movies">
+<ion-list [virtualScroll]="movies">
     
-  <ion-item no-lines *ngFor="let movie of movies" (click)="launchMovieDetailsPage(movie)" text-wrap>
+  <ion-item *virtualItem='let movie' (click)="launchMovieDetailsPage(movie)" text-wrap>
 
   <ion-avatar item-start>
    <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}">
@@ -30,5 +31,7 @@
 
   </ion-item>
 </ion-list>
+
+</ion-content>
 
  
