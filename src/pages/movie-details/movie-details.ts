@@ -65,7 +65,7 @@ export class MovieDetailsPage {
     });
 
     const favoritos: any[] = await this.storage.get('favoritos') || [];
-    this.isFavorite = favoritos.find(f=>f.id == this.movie);    
+    this.isFavorite = favoritos.find(f=>f.id == this.movie['id']);    
     //    console.log('ionViewDidLoad MovieDetailsPage'); 
   }
 
@@ -86,8 +86,6 @@ export class MovieDetailsPage {
       if(!favoritos.find(f=>f.id == this.movie['id']))
       {
         favoritos.unshift(this.movie);
-      
-        console.log(this.movie);
         this.saveToast('O filme foi adicionado com sucesso');
       }
       else{

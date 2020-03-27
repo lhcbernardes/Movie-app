@@ -20,7 +20,7 @@ export class MovieServiceProvider {
 
   //Function that returns the current popular movies from the TMDb
    getPopularMovies(){
-    return this.http.get('https://api.themoviedb.org/3/discover/movie?api_key='+this.apiKey+this.language+'&sort_by=popularity.desc&include_adult=false&include_video=false&page=1')
+    return this.http.get('https://api.themoviedb.org/3/movie/top_rated?api_key='+this.apiKey+this.language+'&page=1')
                         .map(res=> res.json());
   }
 
