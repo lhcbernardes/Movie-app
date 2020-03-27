@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, IonicPage } from 'ionic-angular'; //import the modal controller and Ionic page decorator
 import { MovieServiceProvider } from '../../providers/movie-service/movie-service';
+import { Genre } from '../../model/genre';
 
 @IonicPage() //apply the IonicPage decorator
 @Component({
@@ -10,7 +11,7 @@ import { MovieServiceProvider } from '../../providers/movie-service/movie-servic
 export class HomePage {
 
     //create an empty array
-   genres:any[]=[];
+   genres = new Array<Genre>();
 
   constructor(
     public navCtrl: NavController, 

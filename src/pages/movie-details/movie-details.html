@@ -47,7 +47,7 @@
   <ion-row>
     <ion-list *ngIf="video.length != 0">
       <ion-item-divider no-margin header-title ion-affix class="item item-trns">
-        Videos
+        <strong>Videos</strong>
       </ion-item-divider>
       <ion-item *ngFor="let video of video" (click)="openVideo(video.key)" class="item item-trns">
         <ion-icon name="videocam" item-start></ion-icon>

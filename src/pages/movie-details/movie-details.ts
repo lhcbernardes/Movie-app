@@ -83,7 +83,7 @@ export class MovieDetailsPage {
       //If the movie favorited dont exist in array favoritos will be saved
       //If array favoritos is empty the movie will be saved
         this.isFavorite=!this.isFavorite;
-      if(!favoritos.find(f=>f.id == this.movie))
+      if(!favoritos.find(f=>f.id == this.movie['id']))
       {
         favoritos.unshift(this.movie);
       
@@ -91,7 +91,7 @@ export class MovieDetailsPage {
         this.saveToast('O filme foi adicionado com sucesso');
       }
       else{
-        favoritos = favoritos.filter((f)=> f.id != this.movie);
+        favoritos = favoritos.filter((f)=> f.id != this.movie['id']);
         this.saveToast('Filme removido');
       }
       
