@@ -14,6 +14,7 @@
         <ion-icon [name]="isFavorite ? 'star':'star-outline'"></ion-icon>
       </button>
       <br>
+      
     </ion-buttons>
     <ion-buttons end><button clear ion-button (click)="dismiss()"><ion-icon name="md-close-circle" style="zoom:2.0;"></ion-icon></button></ion-buttons>
   </ion-navbar>
@@ -24,6 +25,7 @@
 <ion-content fullscreen>
 
   <ion-grid *ngIf="movie">
+   
   <ion-row>
     <ion-col col-6>
       <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}">
@@ -41,6 +43,17 @@
       <h4>Sinopse</h4>
       <p>{{movie.overview}}</p>
     </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-list *ngIf="video.length != 0">
+      <ion-item-divider no-margin header-title ion-affix class="item item-trns">
+        Videos
+      </ion-item-divider>
+      <ion-item *ngFor="let video of video" (click)="openVideo(video.key)" class="item item-trns">
+        <ion-icon name="videocam" item-start></ion-icon>
+        {{video.name}}
+      </ion-item>
+    </ion-list>
   </ion-row>
 </ion-grid>
 

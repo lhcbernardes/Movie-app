@@ -5,6 +5,7 @@
     <author email="" href="">Leandro</author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="YouTubeDataApiKey" value="AIzaSyALnSUryBrLm2CmEl2sfP4dIrmMi1RpDsw" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
